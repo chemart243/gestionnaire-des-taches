@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Untitled</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One&amp;display=swap">
+</head>
+
+<body>
+    <header style="background: var(--blue);">
+        <h1 class="text-center" style="color: #ffffff;padding: 31px;font-family: 'Alfa Slab One', serif;">Gestionnaire
+            des taches</h1>
+    </header>
+    <div class="container">
+        <form><input class="form-control" type="text" placeholder="Titre" id="titreTache"><br><textarea class="form-control"
+                placeholder="Saisissez votre tache" id="descriptionTache"></textarea><br><input class="form-control" type="date" id="dateTache"><br><button
+                class="btn btn-primary btn-block" type="button" id="AjouterBouton">Ajouter</button></form><br>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Titre</th>
+                        <th>taches</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>conception</td>
+                        <td>conception d'une affichie pour l'evenement d'un concert</td>
+                        <td>27-11-2024</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
