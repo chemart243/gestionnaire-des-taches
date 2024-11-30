@@ -12,10 +12,11 @@ let descriptionTacheElt = document.getElementById('descriptionTache');
 let dateTacheElt = document.getElementById('dateTache');
 let ajouterBoutonElt = document.getElementById('AjouterBouton');
 
+ajouterBoutonElt.addEventListener("click",ajouter)
 
 
-ajouterBoutonElt.addEventListener("click",() =>{
-    console.log(titreTacheElt.value);
+function ajouter(){
+     /* console.log(titreTacheElt.value);
 
     let tableaux = [];
     tableaux.push(titreTacheElt.value,descriptionTacheElt.value,dateTacheElt.value);
@@ -34,6 +35,205 @@ ajouterBoutonElt.addEventListener("click",() =>{
     }
 
     tableaux.forEach((element) => console.log(element));
-});
+*/
 
+if(titreTacheElt.value == "" || descriptionTacheElt.value == "" || dateTacheElt.value == ""){
+  Swal.fire({
+    title: "Champ de saisi !",
+    text: "Veuillez compléter tous les champs",
+    icon: "error"
+  });
+}
+else{
+
+  Swal.fire({
+    title: "Sauvegarde !",
+    text: "Votre tache a été bien enregistré !",
+    icon: "success"
+  });
+
+
+  var options = {
+    includeUpperCase: true,
+    includeNumbers: true,
+    length: 5,
+    startsWithLowerCase: true
+  };
+  
+  let identifiant = strRandom(options);
+  
+  // renvoie par exemple : "iL0v3"
+
+object1.identifiant = {
+    a: titreTacheElt.value,
+    b: descriptionTacheElt.value,
+    c: dateTacheElt.value
+  }
+
+  for (const [key, value , value2] of Object.entries(object1)) {
+    console.log(`${value.a}`);
+    console.log(`${value.b}`);
+    console.log(`${value.c}`);
+    let  trLigne = document.createElement('tr');
+    let  tdCellule1 = document.createElement('td');
+    let  tdCellule2 = document.createElement('td');
+    let  tdCellule3 = document.createElement('td');
+    let tableauCorps = document.querySelector('tbody');
+    let retourligne = document.createElement('br');
+    let boutonElt  = document.createElement('button');
+
+    boutonElt.textContent = 'modifier';
+    boutonElt.style.color = "white";
+
+    boutonElt.className = "btn btn-warning";
+
+    tdCellule1.innerHTML =  '<span>' + value.a + '</span><br> <button class="btn btn-danger"  type="button">Supprimer</button>';
+    tdCellule2.textContent =  value.b
+    tdCellule3.textContent =  value.c
+
+
+    titreTacheElt.value = "";
+    descriptionTacheElt.value = "";
+    dateTacheElt.value = "";
+
+
+
+
+    tdCellule1.addEventListener("click", () =>{
+
+      
+      Swal.fire({
+        title: "suppression !",
+        text: 'Vous avez supprimé ' + value.a + ' ' + value.b + ' ' + value.c,
+        icon: "success"
+      });
+        console.log(value.a + ' ' + value.b + ' ' + value.c); 
+        value.a = "--"
+        value.b = "--"
+        value.c = "--"
+
+        tdCellule1.style.textDecoration = "line-through";
+        tdCellule2.style.textDecoration = "line-through";
+        tdCellule3.style.textDecoration = "line-through";
+        
+        
+
+        
+        
+    })
+
+    boutonElt.addEventListener("click", () => {
+
+      if(titreTacheElt.value == "" || descriptionTacheElt.value == "" || dateTacheElt.value == ""){
+        Swal.fire({
+          title: "Champ de saisi !",
+          text: "Veuillez inserer les nouvelles pour mettre à jour",
+          icon: "error"
+        });
+      }else{
+        Swal.fire({
+          title: "modification !",
+          text: 'vous avez remplacé ' + value.a + ' par ' + titreTacheElt.value,
+          icon: "success"
+        });
+           boutonElt.textContent = 'mis à jour' 
+           object1.identifiant = {
+            a: titreTacheElt.value,
+            b: descriptionTacheElt.value,
+            c: dateTacheElt.value
+          }
+        
+  
+           recharger();
+
+
+    titreTacheElt.value = "";
+    descriptionTacheElt.value = "";
+    dateTacheElt.value = "";
+
+      }
+      
+    });
+
+
+
+    tdCellule2.appendChild(retourligne);
+    tdCellule2.appendChild(boutonElt);
+    
+
+    trLigne.appendChild(tdCellule1);
+    trLigne.appendChild(tdCellule2);
+    trLigne.appendChild(tdCellule3);
+
+
+    tableauCorps.appendChild(trLigne);
+
+  }
+}
+    
+};
+
+const object1 = {
+
+    
+
+    
+  };
+
+  
+  
+  
+
+  
+  function strRandom(o) {
+    var a = 10,
+        b = 'abcdefghijklmnopqrstuvwxyz',
+        c = '',
+        d = 0,
+        e = ''+b;
+    if (o) {
+      if (o.startsWithLowerCase) {
+        c = b[Math.floor(Math.random() * b.length)];
+        d = 1;
+      }
+      if (o.length) {
+        a = o.length;
+      }
+      if (o.includeUpperCase) {
+        e += b.toUpperCase();
+      }
+      if (o.includeNumbers) {
+        e += '1234567890';
+      }
+    }
+    for (; d < a; d++) {
+      c += e[Math.floor(Math.random() * e.length)];
+    }
+    return c;
+  }
+
+
+  function recharger(){
+    for (const [key, value , value2] of Object.entries(object1)) {
+        console.log(`${value.a}`);
+        console.log(`${value.b}`);
+        console.log(`${value.c}`);
+        let  trLigne = document.createElement('tr');
+        let  tdCellule1 = document.createElement('td');
+        let  tdCellule2 = document.createElement('td');
+        let  tdCellule3 = document.createElement('td');
+        let tableauCorps = document.querySelector('tbody');
+
+        tdCellule1.innerHTML =  '<span>' + value.a + '</span> <button class="btn btn-danger"  type="button">Supprimer</button>';
+        tdCellule2.textContent =  value.b
+        tdCellule3.textContent =  value.c
+
+        trLigne.appendChild(tdCellule1);
+        trLigne.appendChild(tdCellule2);
+        trLigne.appendChild(tdCellule3);
+
+
+        tableauCorps.appendChild(trLigne);
+  }
+}
 
