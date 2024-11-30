@@ -81,8 +81,10 @@ object1.identifiant = {
     let tableauCorps = document.querySelector('tbody');
     let retourligne = document.createElement('br');
     let boutonElt  = document.createElement('button');
+    let boutonElt2 = document.createElement('button');
 
     boutonElt.textContent = 'modifier';
+    boutonElt2.textContent = "vider"
     boutonElt.style.color = "white";
 
     boutonElt.className = "btn btn-warning";
@@ -111,10 +113,25 @@ object1.identifiant = {
         value.a = "--"
         value.b = "--"
         value.c = "--"
+        
+        tdCellule1.style.transition = ".5s .0s"
+        tdCellule2.style.transition = ".5s .0s"
+        tdCellule3.style.transition = ".5s .0s"
 
         tdCellule1.style.textDecoration = "line-through";
         tdCellule2.style.textDecoration = "line-through";
         tdCellule3.style.textDecoration = "line-through";
+
+        boutonElt.style.display = "none";
+
+        tdCellule1.style.display = "none"
+        tdCellule2.style.display = "none";
+        tdCellule3.style.display = "none";
+         
+
+        
+
+        
         
         
 
@@ -136,13 +153,17 @@ object1.identifiant = {
           text: 'vous avez remplacé ' + value.a + ' par ' + titreTacheElt.value,
           icon: "success"
         });
-           boutonElt.textContent = 'mis à jour' 
+        tdCellule1.style.display = "none";
+        tdCellule2.style.display = "none";
+        tdCellule3.style.display = "none";
+
+           
            object1.identifiant = {
             a: titreTacheElt.value,
             b: descriptionTacheElt.value,
             c: dateTacheElt.value
           }
-        
+         boutonElt.textContent = 'mis à jour'
   
            recharger();
 
