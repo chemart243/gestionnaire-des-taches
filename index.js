@@ -86,12 +86,16 @@ object1.identifiant = {
     boutonElt.textContent = 'modifier';
     boutonElt2.textContent = "vider"
     boutonElt.style.color = "white";
+    boutonElt2.style.color = "white";
 
     boutonElt.className = "btn btn-warning";
+    boutonElt2.className = "btn btn-primary";
 
     tdCellule1.innerHTML =  '<span>' + value.a + '</span><br> <button class="btn btn-danger"  type="button">Supprimer</button>';
     tdCellule2.textContent =  value.b
     tdCellule3.textContent =  value.c
+
+    tdCellule3.appendChild(boutonElt2);
 
 
     titreTacheElt.value = "";
@@ -106,7 +110,7 @@ object1.identifiant = {
       
       Swal.fire({
         title: "suppression !",
-        text: 'Vous avez supprimé ' + value.a + ' ' + value.b + ' ' + value.c,
+        text: 'Vous avez barré ' + value.a + ' ' + value.b + ' ' + value.c,
         icon: "success"
       });
         console.log(value.a + ' ' + value.b + ' ' + value.c); 
@@ -122,11 +126,11 @@ object1.identifiant = {
         tdCellule2.style.textDecoration = "line-through";
         tdCellule3.style.textDecoration = "line-through";
 
+
+
         boutonElt.style.display = "none";
 
-        tdCellule1.style.display = "none"
-        tdCellule2.style.display = "none";
-        tdCellule3.style.display = "none";
+       
          
 
         
@@ -138,6 +142,38 @@ object1.identifiant = {
         
         
     })
+
+
+
+
+    boutonElt2.addEventListener("click",() =>{
+
+      Swal.fire({
+        title: "suppression !",
+        text: 'Vous avez supprimé ' + value.a + ' ' + value.b + ' ' + value.c,
+        icon: "success"
+      });
+        console.log(value.a + ' ' + value.b + ' ' + value.c); 
+        value.a = "--"
+        value.b = "--"
+        value.c = "--"
+        
+        tdCellule1.style.transition = ".5s .0s"
+        tdCellule2.style.transition = ".5s .0s"
+        tdCellule3.style.transition = ".5s .0s"
+
+        tdCellule1.style.display = "none";
+        tdCellule2.style.display = "none";
+        tdCellule3.style.display = "none";
+
+
+
+        boutonElt2.style.display = "none";
+
+      
+    });
+
+
 
     boutonElt.addEventListener("click", () => {
 
