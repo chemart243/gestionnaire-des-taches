@@ -7,6 +7,12 @@ function Bienvenu(){
 
 Bienvenu();
 
+let compteurElt = document.getElementById('nombre');
+
+let countElement = 0;
+
+
+
 let titreTacheElt = document.getElementById('titreTache');
 let descriptionTacheElt = document.getElementById('descriptionTache');
 let dateTacheElt = document.getElementById('dateTache');
@@ -45,6 +51,10 @@ if(titreTacheElt.value == "" || descriptionTacheElt.value == "" || dateTacheElt.
   });
 }
 else{
+
+  countElement++;
+
+  compteurElt.textContent = countElement;
 
   Swal.fire({
     title: "Sauvegarde !",
@@ -169,6 +179,9 @@ object1.identifiant = {
 
 
         boutonElt2.style.display = "none";
+
+        countElement--;
+        compteurElt.textContent = countElement;
 
       
     });
