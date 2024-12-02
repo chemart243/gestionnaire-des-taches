@@ -92,6 +92,7 @@ object1.identifiant = {
     let retourligne = document.createElement('br');
     let boutonElt  = document.createElement('button');
     let boutonElt2 = document.createElement('button');
+    let retourLigne2 = document.createElement('br');
 
     boutonElt.textContent = 'modifier';
     boutonElt2.textContent = "vider"
@@ -100,12 +101,16 @@ object1.identifiant = {
 
     boutonElt.className = "btn btn-warning";
     boutonElt2.className = "btn btn-primary";
+    
 
-    tdCellule1.innerHTML =  '<span>' + value.a + '</span><br> <button class="btn btn-danger"  type="button">Supprimer</button>';
+    tdCellule1.innerHTML =  '<span>' + value.a + '</span><br> <button class="btn btn-success"  type="button">terminer</button>';
     tdCellule2.textContent =  value.b
     tdCellule3.textContent =  value.c
 
+
+    tdCellule3.appendChild(retourLigne2)
     tdCellule3.appendChild(boutonElt2);
+
 
 
     titreTacheElt.value = "";
@@ -119,14 +124,11 @@ object1.identifiant = {
 
       
       Swal.fire({
-        title: "suppression !",
-        text: 'Vous avez barré ' + value.a + ' ' + value.b + ' ' + value.c,
+        title: "tache terminée !",
+        text: 'Vous avez fini la tâche ' + value.a + ' ' + value.b + ' ' + value.c,
         icon: "success"
       });
         console.log(value.a + ' ' + value.b + ' ' + value.c); 
-        value.a = "--"
-        value.b = "--"
-        value.c = "--"
         
         tdCellule1.style.transition = ".5s .0s"
         tdCellule2.style.transition = ".5s .0s"
@@ -164,9 +166,6 @@ object1.identifiant = {
         icon: "success"
       });
         console.log(value.a + ' ' + value.b + ' ' + value.c); 
-        value.a = "--"
-        value.b = "--"
-        value.c = "--"
         
         tdCellule1.style.transition = ".5s .0s"
         tdCellule2.style.transition = ".5s .0s"
