@@ -100,7 +100,7 @@ object1.identifiant = {
     boutonElt2.style.color = "white";
 
     boutonElt.className = "btn btn-warning";
-    boutonElt2.className = "btn btn-primary";
+    boutonElt2.className = "btn btn-danger";
     
 
     tdCellule1.innerHTML =  '<span>' + value.a + '</span><br> <button class="btn btn-success"  type="button">terminer</button>';
@@ -192,7 +192,7 @@ object1.identifiant = {
       if(titreTacheElt.value == "" || descriptionTacheElt.value == "" || dateTacheElt.value == ""){
         Swal.fire({
           title: "Champ de saisi !",
-          text: "Veuillez inserer les nouvelles pour mettre à jour",
+          text: "Veuillez remplir les champs pour mettre à jour",
           icon: "error"
         });
       }else{
@@ -300,6 +300,14 @@ const object1 = {
         trLigne.appendChild(tdCellule1);
         trLigne.appendChild(tdCellule2);
         trLigne.appendChild(tdCellule3);
+
+        tdCellule1.onclick =  function (){
+          tdCellule1.style.display = "none";
+          tdCellule2.style.display = "none";
+          tdCellule3.style.display = "none";
+
+          countElement--;
+        }
 
 
         tableauCorps.appendChild(trLigne);
